@@ -6,7 +6,7 @@
 /*   By: ezeh <ezeh@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 12:05:11 by ezeh              #+#    #+#             */
-/*   Updated: 2024/02/14 10:02:28 by ezeh             ###   ########.fr       */
+/*   Updated: 2024/02/14 12:34:31 by ezeh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_list
 }				t_list;
 
 char	*get_next_line(int fd);
-t_list	*create_list(int fd, t_list *list);
+t_list	*create_list(int fd, t_list **list);
 char	*polish_last_line(t_list *list);
 void	polish_list(t_list **list);
 
