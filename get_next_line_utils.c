@@ -6,11 +6,12 @@
 /*   By: ezeh <ezeh@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 12:35:22 by ezeh              #+#    #+#             */
-/*   Updated: 2024/02/14 09:57:06 by ezeh             ###   ########.fr       */
+/*   Updated: 2024/02/14 12:33:08 by ezeh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
 
 void	dealloc(t_list **list)
 {
@@ -55,12 +56,16 @@ int	check_for_newline(t_list *list)
 
 	if (list == NULL)
 		return (0);
-	i = 0;
-	while (list->buffer[i] && i < BUFFER_SIZE)
+	while (list != NULL)
 	{
-		if (list->buffer[i] == '\n')
-			return (1);
-		++i;
+		i = 0;
+		while (list->buffer[i] && i < BUFFER_SIZE)
+		{
+			if (list->buffer[i] == '\n')
+				return (1);
+			++i;
+		}
+		list = list->next;
 	}
 	return (0);
 }
@@ -70,9 +75,7 @@ void	add_note(t_list **list, char *buffer)
 	t_list	*new_node;
 	t_list	*last_node;
 
-	print_list(*list);
 	last_node = find_last_note(*list);
-	printf("ERROR > add_note\n");
 	new_node = (void *)malloc(sizeof(t_list));
 	if (new_node == NULL)
 	{
@@ -92,27 +95,13 @@ void	add_note(t_list **list, char *buffer)
 	// print_list(*list);
 }
 
-void	print_list(t_list *list)
-{
-	t_list	*current;
-	current = list;
-	printf("xxx\n");
-	while (current)
-	{
-		printf("%s\n", current->buffer);
-		current = current->next;
-	}
-	printf("xxx\n");	
-}
 
 void	*find_last_note(t_list *list)
 {
-	t_list	*current;
-
-	current = list;
-	if (current == NULL)
+	if (list == NULL)
 		return (NULL);
-	while (current->next != NULL)
-		current = current->next;
-	return (current);
+	while (list->next != NULL)
+		list = list->next;
+	return (list);
 }
+

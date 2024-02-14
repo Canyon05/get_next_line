@@ -6,7 +6,7 @@
 /*   By: ezeh <ezeh@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 13:19:52 by ezeh              #+#    #+#             */
-/*   Updated: 2024/02/14 09:19:52 by ezeh             ###   ########.fr       */
+/*   Updated: 2024/02/14 11:30:38 by ezeh             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int	main(void)
 		printf("line: %s", line);
 		free(line);
 		line = get_next_line(fd);
-		printf("=======\n");
 	}
 	close(fd);
 	return (0);
